@@ -1,0 +1,18 @@
+{
+  "name": "830ef6d0",
+  "pluginName": "note",
+  "description": "快捷笔记本",
+  "version": "v1.0.0",
+  "preload": "dist/index.html",
+  "author": "xkloveme",
+  "homepage": "https://github.com/xkloveme/utools",
+  "logo": "icon.png",
+  "features": [
+    {
+      "code": "note",
+      "explain": "新建笔记",
+      "cmds": ["note","笔记"],
+      "icon": "icon.png"
+    }
+  ]
+}
