@@ -67,7 +67,7 @@
       </div>
       <div class="mdui-container-fluid">
         <div class="mdui-row">
-          <editor ref="editor" @getList="$refs['list'].getData()" :msg="msg" :key="index" />
+          <editor ref="editor" :id="id" @getList="$refs['list'].getData()" :msg="msg" :key="index" />
         </div>
       </div>
     </div>
@@ -87,25 +87,22 @@ export default {
   data() {
     return {
       msg: '',
+      id: '',
+      index: 1,
       showClass: true
     }
   },
   methods: {
     open(url) {
       window.openExternal(url)
-      // this.$api.putApi({
-      //   index: this.index++,
-      //   title: '1111asdadsasdasdasdadasdasdadadasdasd',
-      //   time: '2020-5-24',
-      //   content: 'hahah'
-      // })
     },
     handleAdd() {
       this.index++
+      this.id = ''
       this.msg = ''
     },
     handleClick(item) {
-      console.log('🐛:: handleClick -> item', item)
+      this.id = item._id || ''
       this.index++
       this.msg = item.content
     }
