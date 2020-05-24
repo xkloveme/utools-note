@@ -13,6 +13,7 @@ note
 <img src="https://forthebadge.com/images/badges/built-with-love.svg">
 <p>
 <p align="center">
+<img src="https://github.com/aleen42/badges/raw/master/src/vue_flat_square.svg?sanitize=true">
 <img src="https://github.com/aleen42/badges/raw/master/src/javascript_flat_square.svg?sanitize=true">
 </p>
 
@@ -23,15 +24,6 @@ note
 2. 记录便捷的笔记本
 
 
-
-#### 全局快捷键:
-
-|          快捷键          | 说明       | 主界面 | 小窗口 |
-| :----------------------: | ---------- | :----: | :----: |
-| `⌘ + ➡`  或  `Ctrl + ➡` | 下一集     |   √    |   √    |
-| `⌘ + ⬅`  或  `Ctrl + ⬅` | 上一集     |   √    |   √    |
-| `⌘ + ⬆`  或  `Ctrl + ⬆` | 减少透明度 |        |   √    |
-| `⌘ + ⬇`  或  `Ctrl + ⬇` | 增加透明度 |        |   √    |
 
 
 
