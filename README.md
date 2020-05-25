@@ -17,7 +17,7 @@ note
 <img src="https://github.com/aleen42/badges/raw/master/src/javascript_flat_square.svg?sanitize=true">
 </p>
 
-
+![image](./utools-note.gif)
 ## note 插件
 
 1. 全平台支持. windows, mac, linux.

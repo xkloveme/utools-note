@@ -35,14 +35,17 @@ let utools = window.utools;
 
 // 上传数据更新数据
 export const putApi = (data) => {
-  console.log("🐛:: putApi -> data", data);
+  console.log("上传数据更新数据", {
+    ...data,
+    _id: data["_id"] || createRandomId(),
+  });
   return new Promise((resolve, reject) => {
     let res = utools.db.put({
-      _id: data['_id'] || createRandomId(),
       ...data,
+      _id: data["_id"] || createRandomId(),
     });
     if (res) {
-      console.log('🐛:: putApi -> res', res)
+      console.log("🐛:: putApi -> res", res);
       resolve(res);
     } else {
       reject("出错");
@@ -52,11 +55,11 @@ export const putApi = (data) => {
 
 // 获取数据
 export const getApi = (id) => {
-  console.log('🐛:: getApi -> id', id)
+  console.log("🐛:: getApi -> id", id);
   return new Promise((resolve, reject) => {
     let res = utools.db.get(id);
     if (res) {
-      console.log('🐛:: getApi -> res', res)
+      console.log("🐛:: getApi -> res", res);
       resolve(res);
     } else {
       reject("出错");
@@ -66,11 +69,11 @@ export const getApi = (id) => {
 
 // 移除数据
 export const removeApi = (id) => {
-  console.log('🐛:: removeApi -> id', id)
+  console.log("🐛:: removeApi -> id", id);
   return new Promise((resolve, reject) => {
     let res = utools.db.remove(id);
     if (res) {
-      console.log('🐛:: removeApi -> res', res)
+      console.log("🐛:: removeApi -> res", res);
       resolve(res);
     } else {
       reject("出错");
@@ -92,10 +95,10 @@ export const bulkDocsApi = (data) => {
 
 // 获取所有数据
 export const allDocsApi = (data) => {
-  console.log('🐛:: allDocsApi -> data', data)
   return new Promise((resolve, reject) => {
     let res = utools.db.allDocs(data);
     if (res) {
+      console.log("🐛:: allDocsApi -> res", res);
       resolve(res);
     } else {
       reject("出错");
