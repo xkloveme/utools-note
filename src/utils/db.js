@@ -38,7 +38,7 @@ export const putApi = (data) => {
   console.log("🐛:: putApi -> data", data);
   return new Promise((resolve, reject) => {
     let res = utools.db.put({
-      _id: data._id ? data._id : createRandomId(),
+      _id: data['_id'] || createRandomId(),
       ...data,
     });
     if (res) {

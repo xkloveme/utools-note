@@ -9,6 +9,14 @@
         <div class="mdui-toolbar-spacer"></div>
         <a
           href="javascript:;"
+          @click="saveData(editData)"
+          class="mdui-btn mdui-btn-icon"
+          mdui-tooltip="{content: '保存笔记'}"
+        >
+          <i class="mdui-icon material-icons">save</i>
+        </a>
+        <a
+          href="javascript:;"
           @click="handleAdd"
           class="mdui-btn mdui-btn-icon"
           mdui-tooltip="{content: '添加笔记'}"
@@ -67,7 +75,7 @@
       </div>
       <div class="mdui-container-fluid">
         <div class="mdui-row">
-          <editor ref="editor" :id="id" @getList="$refs['list'].getData()" :msg="msg" :key="index" />
+          <editor ref="editor" @onEditorChange="onEditorChange" @getList="saveData" :msg="msg" :key="index" />
         </div>
       </div>
     </div>
@@ -86,10 +94,11 @@ export default {
   },
   data() {
     return {
-      msg: '',
       id: '',
+      msg: '',
       index: 1,
-      showClass: true
+      showClass: true,
+      editData: {}
     }
   },
   methods: {
@@ -102,9 +111,20 @@ export default {
       this.msg = ''
     },
     handleClick(item) {
-      this.id = item._id || ''
       this.index++
       this.msg = item.content
+      this.id = item['_id']
+    },
+    saveData(data) {
+      data['_id'] = this.id
+      this.$api.putApi(data).then(() => {
+        this.utools.showNotification('保存成功')
+        this.$refs['list'].getData()
+      })
+    },
+    onEditorChange(data) {
+      console.log('🐛:: onEditorChange -> data', data)
+      this.editData = data
     }
   }
 }

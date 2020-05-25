@@ -2,7 +2,7 @@
   <div class="edit_container">
     <quill-editor
       v-model="content"
-      style="height:500px"
+      style="height:400px"
       ref="myQuillEditor"
       :options="editorOption"
       @blur="onEditorBlur($event)"
@@ -14,7 +14,7 @@
 <script>
 export default {
   name: 'App',
-  props: ['msg', 'id'],
+  props: ['msg'],
   data() {
     return {
       content: this.msg,
@@ -33,23 +33,27 @@ export default {
     },
     onEditorBlur(el) {
       if (this.content) {
-        this.$api.putApi({
-          _id: this.id,
+        let data = {
           content: this.content,
           title: el.container.textContent,
           time: new Date().getTime()
-        }).then(()=>{
-          this.utools.showNotification('保存成功')
-        })
-        this.$emit('getList')
+        }
+        this.$emit('getList', data)
       }
       // 失去焦点事件
     },
     onEditorFocus() {
       // 获得焦点事件
     },
-    onEditorChange() {
-      // 内容改变事件
+    onEditorChange(el) {
+       if (this.content) {
+        let data = {
+          content: this.content,
+          title: el.container.textContent,
+          time: new Date().getTime()
+        }
+        this.$emit('onEditorChange', data)
+      }
     }
   }
 }
