@@ -1,7 +1,7 @@
 {
   "pluginName": "note",
   "description": "快捷笔记本",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "dist/index.html",
   "preload": "public/preload.js",
   "author": "xkloveme",
