@@ -50,27 +50,27 @@ export default {
       return this.$refs.myQuillEditor.quill
     }
   },
-  mounted() {
-  },
+  mounted() {},
   methods: {
     onEditorReady(editor) {
       // 准备编辑器
       console.log('🐛:: onEditorReady -> editor', editor)
-      this.$refs['myQuillEditor'].quill.keyboard.addBinding({ key: 'B' ,shortKey: true }, this.keyBindFn)
+      // this.$refs['myQuillEditor'].quill.keyboard.addBinding({ key: 'B' ,shortKey: true }, this.keyBindFn)
     },
     keyBindFn() {
       // let vm = this;
-      console.log('1 :', 1);
+      // console.log('1 :', 1);
     },
-    onEditorBlur() {
-      if (this.content) {
-        // let data = {
-        //   content: this.content,
-        //   title: el.container.textContent,
-        //   time: new Date().getTime()
-        // }
-        this.$emit('onEditorSave')
-      }
+    onEditorBlur(el) {
+      console.log('🐛:: onEditorBlur -> el', el)
+      // if (this.content) {
+      //   let data = {
+      //     content: this.content,
+      //     title: el.container.textContent,
+      //     time: new Date().getTime()
+      //   }
+      //   this.$emit('onEditorSave', data)
+      // }
       // 失去焦点事件
     },
     onEditorFocus() {
@@ -80,6 +80,7 @@ export default {
     onEditorChange(el) {
       console.log('🐛:: onEditorChange -> el', el)
       if (el.text) {
+        this.content = el.html
         let data = {
           content: el.html,
           title: el.text,

@@ -1,17 +1,19 @@
 <template>
   <div>
     <ul class="mdui-list">
-      <van-cell-group>
+      <van-cell-group v-for="(item,i) in list" :key="i+1">
         <li
-          v-for="(item,i) in list"
-          :key="i+1"
           @mouseover="hoverIndex = i"
           @mouseout="hoverIndex = -1"
           style="position: relative;height: 32px;overflow: auto;"
         >
           <van-cell>
             <template #title>
-              <span @click="handleClick" class="custom-title" :title="$api.toLocaleString(item.time)">{{item.title}}</span>
+              <span
+                @click="handleClick(item)"
+                class="custom-title"
+                :title="$api.toLocaleString(item.time)"
+              >{{item.title}}</span>
             </template>
             <template #right-icon>
               <van-icon
@@ -73,5 +75,6 @@ export default {
   text-overflow: ellipsis;
   word-break: break-all;
   word-wrap: break-word;
+  cursor: pointer;
 }
 </style>
