@@ -7,11 +7,11 @@
           :key="i+1"
           @mouseover="hoverIndex = i"
           @mouseout="hoverIndex = -1"
-          style="position: relative;height: 39px;overflow: auto;"
+          style="position: relative;height: 32px;overflow: auto;"
         >
           <van-cell>
             <template #title>
-              <span class="custom-title" :title="$api.toLocaleString(item.time)">{{item.title}}</span>
+              <span @click="handleClick" class="custom-title" :title="$api.toLocaleString(item.time)">{{item.title}}</span>
             </template>
             <template #right-icon>
               <van-icon

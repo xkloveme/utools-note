@@ -18,7 +18,7 @@ Vue.prototype.utools = window.utools;
 Vue.prototype.$api = Api;
 
 if (process.env.NODE_ENV === "production") {
-  this.utools.onPluginReady(() => {
+  window.utools.onPluginReady(() => {
     console.log("插件装配完成，已准备好");
     new Vue({
       render: (h) => h(App),
