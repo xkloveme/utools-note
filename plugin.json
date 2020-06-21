@@ -1,18 +1,18 @@
 {
   "pluginName": "note",
   "description": "快捷笔记本",
-  "version": "0.0.2",
+  "version": "0.0.5",
   "main": "dist/index.html",
-  "preload": "public/preload.js",
+  "preload": "dist/preload.js",
   "author": "xkloveme",
-  "homepage": "https://github.com/xkloveme/utools",
-  "logo": "public/icon.png",
+  "homepage": "https://github.com/xkloveme",
+  "logo": "dist/icon.png",
   "features": [
     {
       "code": "note",
       "explain": "新建笔记",
       "cmds": ["note", "笔记", "快记", "简记", "notes"],
-      "icon": "public/icon.png"
+      "icon": "dist/icon.png"
     }
   ]
 }

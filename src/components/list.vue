@@ -1,22 +1,31 @@
 <template>
   <div>
     <ul class="mdui-list">
-      <li
-        class="mdui-list-item mdui-ripple mdui-hoverable"
-        v-for="(item,i) in list"
-        :key="i+1"
-        :mdui-tooltip="item.newtime"
-        @click="handleClick(item)"
-        @mouseover="hoverIndex = i"
-        @mouseout="hoverIndex = -1"
-      >
-        <div class="mdui-list-item-content mdui-text-truncate">{{item.title}}</div>
-        <i
-          v-show="hoverIndex===i"
-          class="mdui-list-item-icon mdui-icon material-icons"
-          @click="del(item)"
-        >delete</i>
-      </li>
+      <van-cell-group>
+        <li
+          v-for="(item,i) in list"
+          :key="i+1"
+          @mouseover="hoverIndex = i"
+          @mouseout="hoverIndex = -1"
+          style="position: relative;height: 39px;overflow: auto;"
+        >
+          <van-cell>
+            <template #title>
+              <span class="custom-title" :title="$api.toLocaleString(item.time)">{{item.title}}</span>
+            </template>
+            <template #right-icon>
+              <van-icon
+                @click="del(item)"
+                color="red"
+                title="删除笔记"
+                v-show="hoverIndex===i"
+                name="delete"
+                style="line-height: inherit;cursor: pointer;"
+              />
+            </template>
+          </van-cell>
+        </li>
+      </van-cell-group>
     </ul>
   </div>
 </template>
@@ -38,14 +47,8 @@ export default {
     getData() {
       this.$api.allDocsApi().then(res => {
         if (!res.error) {
-          this.list = res
+          this.list = res.reverse()
           if (res.length) {
-            res.map(item => {
-              if (item.time) {
-                let day = this.$api.toLocaleString(item.time)
-                item['newtime'] = `{ "content": "${day}" }`
-              }
-            })
             !this.id && this.$emit('click', res['0'])
           }
         }
@@ -65,4 +68,10 @@ export default {
 </script>
 
 <style scoped>
+.custom-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  word-wrap: break-word;
+}
 </style>
