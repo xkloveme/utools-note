@@ -23,12 +23,22 @@
 
 ## 更新日志
 
+- ### 0.0.5
+> - 修复暗黑模式下的显示问题
+> - 添加快捷键保存
+
 - ### 0.0.4
 > - 上架应用市场
 > - 修复首次登录未获取到数据问题
 
+## 发电
+> **谨慎如果您觉得不错,请帮助开发者喝杯咖啡☕️,一分也是情一分也是爱❤️当然您的鼓励会让我走的更远.**
+
+![wechat.jpeg](https://img02.sogoucdn.com/app/a/100520146/7081607b941bafb373447eedb1c0ab6b)
+![alipay.png](https://img01.sogoucdn.com/app/a/100520146/f8b1e510e54d9242ca7b4e63d70aef8f)
 ## 关注我
 
 觉得不错的话给个`star`
 
+- [小康之家](https://www.jixiaokang.com)
 - [xkloveme](https://github.com/xkloveme)

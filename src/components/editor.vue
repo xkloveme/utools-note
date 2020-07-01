@@ -2,7 +2,7 @@
   <div class="edit_container">
     <quill-editor
       v-model="content"
-      style="height:400px"
+      style="height:400px;background-color: #fff;"
       ref="myQuillEditor"
       :options="editorOption"
       @blur="onEditorBlur($event)"

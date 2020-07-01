@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Title @handleList="show=true" @saveData="saveData" @handleAdd="handleAdd"></Title>
-    <van-popup v-model="show" position="left" round :style="{ height: '100%',width:'30%' }">
+    <van-popup v-model="show" position="left" :style="{ height: '100%',width:'30%' }">
       <list :id="id" @click="handleClick" ref="list" />
     </van-popup>
     <div>
