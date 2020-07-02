@@ -40,6 +40,15 @@ export default {
       editData: {}
     }
   },
+  mounted() {
+    let _this = this
+    document.onkeydown = function(e) {
+      let _key = window.event.keyCode
+      if (_key === 91 && e.ctrlKey) {
+        _this.saveData()
+      }
+    }
+  },
   methods: {
     open(url) {
       window.openExternal(url)
