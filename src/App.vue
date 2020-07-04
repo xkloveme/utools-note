@@ -66,19 +66,22 @@ export default {
       this.id = item['_id']
       this.rev = item['_rev']
     },
-    saveData(data = this.editData) {
+    saveData(data = this.editData, state = true) {
       data['_id'] = this.id
-      data['_rev'] = this.rev
-      this.$api.putApi(data).then(res => {
-        this.utools.showNotification('保存成功')
-        if (res.ok) {
-          this.id = res.id
-        }
-        this.$refs['list'].getData()
+      this.$api.getApi(data['_id']).then(res => {
+        data['_rev'] = res['_rev']
+        this.$api.putApi(data).then(res => {
+          state && this.utools.showNotification('保存成功')
+          if (res.ok) {
+            this.id = res.id
+          }
+          this.$refs['list'].getData()
+        })
       })
     },
     onEditorChange(data) {
       this.editData = data
+      this.saveData(data, false)
     }
   }
 }

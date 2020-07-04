@@ -51,6 +51,7 @@ export default {
         if (!res.error) {
           this.list = res.reverse()
           if (res.length) {
+            console.log('🐛:: getData -> res', res['0'])
             !this.id && this.$emit('click', res['0'])
           }
         }
