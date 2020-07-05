@@ -68,15 +68,22 @@ export default {
     },
     saveData(data = this.editData, state = true) {
       data['_id'] = this.id
-      this.$api.getApi(data['_id']).then(res => {
-        data['_rev'] = res['_rev']
-        this.$api.putApi(data).then(res => {
-          state && this.utools.showNotification('保存成功')
-          if (res.ok) {
-            this.id = res.id
-          }
-          this.$refs['list'].getData()
+      if (this.id) {
+        this.$api.getApi(data['_id']).then(res => {
+          data['_rev'] = res['_rev']
+          this.submit(data, state)
         })
+      } else {
+        this.submit(data, state)
+      }
+    },
+    submit(data, state) {
+      this.$api.putApi(data).then(res => {
+        state && this.utools.showNotification('保存成功')
+        if (res.ok) {
+          this.id = res.id
+        }
+        this.$refs['list'].getData()
       })
     },
     onEditorChange(data) {
