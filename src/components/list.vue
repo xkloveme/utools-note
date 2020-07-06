@@ -5,7 +5,7 @@
         <li
           @mouseover="hoverIndex = i"
           @mouseout="hoverIndex = -1"
-          style="position: relative;height: 32px;overflow: auto;"
+          style="position: relative;height: 32px;overflow: hidden;"
         >
           <van-cell>
             <template #title>
