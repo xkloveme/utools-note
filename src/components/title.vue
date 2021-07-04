@@ -79,6 +79,14 @@ export default {
   },
   mounted() {
     let self = this
+    document.onkeydown = function (e) {
+      var keyCode = e.keyCode || e.which || e.charCode
+      var ctrlKey = e.ctrlKey || e.metaKey
+      if (ctrlKey && keyCode == 83) {
+        self.saveData()
+        return false
+      }
+    }
     setInterval(function() {
       self.time = self.$api.toLocaleString(new Date())
     }, 1000)

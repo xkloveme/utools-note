@@ -5,7 +5,8 @@
         <li
           @mouseover="hoverIndex = i"
           @mouseout="hoverIndex = -1"
-          style="position: relative;height: 32px;overflow: hidden;"
+          @click="handleClick(item)"
+          style="position: relative;height: 38px;overflow: hidden;"
         >
           <van-cell>
             <template #title>
@@ -13,7 +14,7 @@
                 @click="handleClick(item)"
                 class="custom-title"
                 :title="$api.toLocaleString(item.time)"
-              >{{item.title}}</span>
+              >{{item.title || '未命名笔记'}}</span>
             </template>
             <template #right-icon>
               <van-icon

@@ -11,6 +11,7 @@
         @onEditorChange="onEditorChange"
         @onEditorSave="saveData"
         :msg="msg"
+        :title="title"
         :key="index"
       />
     </div>
@@ -40,15 +41,6 @@ export default {
       editData: {}
     }
   },
-  mounted() {
-    let _this = this
-    document.onkeydown = function(e) {
-      let _key = window.event.keyCode
-      if (_key === 91 && e.ctrlKey) {
-        _this.saveData()
-      }
-    }
-  },
   methods: {
     open(url) {
       window.openExternal(url)
@@ -58,10 +50,12 @@ export default {
       this.id = ''
       this.rev = ''
       this.msg = ''
+      this.title=''
     },
     handleClick(item) {
       this.index++
       this.msg = item.content
+      this.title = item.title
       this.showClass = false
       this.id = item['_id']
       this.rev = item['_rev']
